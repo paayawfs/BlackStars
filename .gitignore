@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+.eggs/
+*.manifest
+*.spec
+
+# Virtual environments
+venv/
+env/
+.env/
+.venv/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Raw scraped data (large, can be regenerated)
+data/raw/*.csv
+
+# Keep processed data - this is the final dataset!
+
+# Model outputs
+outputs/*.pkl
+outputs/*.png
+outputs/*.csv
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Credentials/secrets
+*.env
+.env.local
+secrets.json

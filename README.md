@@ -1,35 +1,38 @@
-# Football Player Analytics Pipeline
+# ⚽ Football Player Analytics Pipeline
 
-A comprehensive data science project for analyzing football forwards using FBref statistics, unsupervised machine learning (K-Means clustering), and tactical recommendations for the Ghana Black Stars.
+A data science project for analyzing football forwards using FBref statistics and K-Means clustering, with a focus on Ghana Black Stars squad analysis.
 
-## 🎯 Project Overview
+## 🎯 Overview
 
 This project:
-1. **Collects** player statistics from 8 major leagues (Premier League, La Liga, Serie A, Bundesliga, Ligue 1, Championship, MLS, Eredivisie)
-2. **Clusters** ~2,000 forwards into player archetypes using K-Means
-3. **Analyzes** Ghana national team players in global context
-4. **Recommends** optimal lineups based on data insights
+1. **Scrapes** player statistics from 7 major leagues via Selenium
+2. **Processes** 50+ per-90 metrics across shooting, passing, possession, defense, and more
+3. **Clusters** ~700 unique forwards into player archetypes using K-Means
+4. **Analyzes** Ghana national team players in global context
 
 ## 📁 Project Structure
 
 ```
 FBref/
 ├── notebooks/
-│   ├── 01_data_collection.ipynb    # Scrape FBref data
-│   ├── 02_data_processing.ipynb    # Clean & normalize data
+│   ├── 01_data_collection.ipynb    # Basic FBref scraping
+│   ├── 01b_scrape_all_stats.ipynb  # Full stats (shooting, passing, etc.)
+│   ├── 02_data_processing.ipynb    # Clean, merge & normalize data
 │   ├── 03_clustering.ipynb         # K-Means clustering
-│   └── 04_ghana_analysis.ipynb     # Ghana deep dive & recommendations
+│   └── 04_ghana_analysis.ipynb     # Ghana deep dive
+├── src/
+│   ├── scraper.py                  # Selenium scraping functions
+│   ├── processor.py                # Data processing pipeline
+│   └── clustering.py               # Clustering utilities
+├── scripts/
+│   └── run_ghana_analysis.py       # Standalone Ghana analysis script
 ├── data/
-│   ├── raw/                        # Raw scraped data
-│   └── processed/                  # Cleaned, normalized data
-├── outputs/
-│   ├── cluster_scatter.png         # All forwards visualization
-│   ├── ghana_global_scatter.png    # Ghana players highlighted
-│   ├── radar_*.png                 # Player comparison charts
-│   └── clustering_model.pkl        # Saved ML model
+│   ├── raw/                        # Raw scraped CSVs (gitignored)
+│   └── processed/                  # Final processed dataset
+├── outputs/                        # Generated visualizations & models
 ├── config.py                       # Configuration settings
 ├── requirements.txt                # Python dependencies
-└── README.md                       # This file
+└── .gitignore
 ```
 
 ## 🚀 Quick Start
@@ -40,79 +43,57 @@ FBref/
 pip install -r requirements.txt
 ```
 
-### 2. Run the Notebooks
+### 2. Run the Pipeline
 
-Run the notebooks in order:
+**Option A: Use existing processed data**
+- Skip to notebook `03_clustering.ipynb` (processed data included in repo)
 
-1. **01_data_collection.ipynb** - Scrapes FBref (takes 30-60 min)
-2. **02_data_processing.ipynb** - Cleans and normalizes data
-3. **03_clustering.ipynb** - Runs K-Means clustering
-4. **04_ghana_analysis.ipynb** - Ghana analysis and visualizations
+**Option B: Scrape fresh data**
+Run notebooks in order:
+1. `01b_scrape_all_stats.ipynb` - Scrapes all stat types (~45 min)
+2. `02_data_processing.ipynb` - Merges and normalizes
+3. `03_clustering.ipynb` - Runs K-Means clustering
+4. `04_ghana_analysis.ipynb` - Ghana analysis
 
-## 📊 What is `soccerdata`?
+## 📊 Data Sources
 
-The `soccerdata` library is the backbone of our data collection. It:
+Data scraped from [FBref](https://fbref.com) covering:
+- **Leagues**: Premier League, La Liga, Serie A, Bundesliga, Ligue 1, Championship, Eredivisie
+- **Stat Types**: Standard, Shooting, Passing, Possession, Defense, Misc, GCA
 
-- **Scrapes FBref** without you writing complex HTML parsers
-- **Handles rate limiting** (FBref blocks fast scrapers)
-- **Caches data** so you don't re-scrape the same pages
-- **Returns Pandas DataFrames** ready for analysis
+## 🇬🇭 Ghana Players Tracked
 
-Example usage:
-```python
-import soccerdata as sd
-
-# Get Premier League shooting stats
-fbref = sd.FBref(leagues=["ENG-Premier League"], seasons=["2024-2025"])
-shooting = fbref.read_player_season_stats(stat_type="shooting")
-```
-
-## 🇬🇭 Ghana Players Analyzed
-
-1. Mohammed Kudus
-2. Antoine Semenyo
-3. Jordan Ayew
-4. Ernest Nuamah
-5. Osman Bukari
-6. Fatawu Issahaku
-7. Kamaldeen Sulemana
-8. Ibrahim Osman
-9. Brandon Thomas-Asante
-10. Iñaki Williams
-11. Joseph Paintsil
-12. Jerry Afriyie
-13. Christopher Bonsu Baah
+| Player | Club | League |
+|--------|------|--------|
+| Mohammed Kudus | West Ham | Premier League |
+| Antoine Semenyo | Bournemouth | Premier League |
+| Jordan Ayew | Crystal Palace | Premier League |
+| Fatawu Issahaku | Leicester City | Championship |
+| Iñaki Williams | Athletic Bilbao | La Liga |
+| Kamaldeen Sulemana | Southampton | Championship |
+| Ernest Nuamah | Lyon | Ligue 1 |
+| + 6 more | | |
 
 ## 📈 Outputs
 
-### Scatter Plot
-A 2D visualization showing where Ghana players sit among ~2,000 global forwards.
+- **Cluster profiles** with statistical descriptions (no arbitrary names)
+- **Radar charts** comparing player percentile rankings
+- **Scatter plots** showing Ghana players vs global forwards
+- **Tactical recommendations** for lineup selection
 
-### Radar Charts
-Direct comparisons between players (e.g., Fatawu vs Nuamah) showing percentile rankings.
+## ⚙️ Configuration
 
-### Cluster Profiles
-Automatically discovered player archetypes like:
-- 🦊 Fox in the Box (Poacher)
-- 🎨 Creative Playmaker
-- ⚡ Complete Forward
-- 🔄 Balanced Forward
+Edit `config.py` to customize:
+- `MIN_MINUTES_PLAYED`: Minimum playing time filter (default: 450)
+- `FORWARD_POSITIONS`: Position codes to include
+- `CLUSTERING_FEATURES`: Metrics used for clustering
 
-### Tactical Recommendations
-Data-backed lineup suggestions for:
-- **Dominant lineup** (vs weaker teams)
-- **Counter-attack lineup** (vs stronger teams)
-- **Plan B** impact substitutes
+## ⚠️ Notes
 
-## ⚠️ Important Notes
-
-1. **Rate Limiting**: FBref requires 3-6 second delays between requests. Full scraping takes 30-60 minutes.
-
-2. **Data Freshness**: Run `01_data_collection.ipynb` to get the latest stats.
-
-3. **Missing Players**: Some players may not appear if they haven't played enough minutes (minimum 450 minutes).
+- **Rate limiting**: FBref requires 6-10 second delays between requests
+- **Scraping time**: Full scrape takes ~45 minutes
+- **Minimum minutes**: Players with <450 minutes are excluded
 
 ## 📝 License
 
-This project is for educational/analytical purposes only. FBref data is subject to their terms of service.
-"# BlackStars" 
+For educational/analytical purposes only. FBref data subject to their terms of service.

@@ -1,0 +1,13 @@
+key,column
+player,Unnamed: 0_level_0_Rk
+team,Unnamed: 4_level_0_Squad
+position,Unnamed: 3_level_0_Pos
+age,Unnamed: 5_level_0_Age
+nation,Unnamed: 2_level_0_Nation
+minutes,Playing Time_Min
+games,Playing Time_MP
+goals,Performance_Gls
+assists,Performance_Ast
+xg,Expected_xG
+npxg,Expected_npxG
+xag,Expected_xAG

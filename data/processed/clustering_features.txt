@@ -1,0 +1,62 @@
+Playing Time_90s
+Per 90 Minutes_Gls
+Per 90 Minutes_Ast
+Per 90 Minutes_G+A
+Per 90 Minutes_G-PK
+Per 90 Minutes_G+A-PK
+Per 90 Minutes_xG
+Per 90 Minutes_xAG
+Per 90 Minutes_xG+xAG
+Per 90 Minutes_npxG
+Per 90 Minutes_npxG+xAG
+90s
+Standard_Sh/90
+Standard_SoT/90
+SCA_SCA90
+GCA_GCA90
+Performance_Gls_per90
+Standard_Gls_per90
+Performance_Ast_per90
+Ast_per90
+Performance_G+A_per90
+Performance_G-PK_per90
+Performance_PK_per90
+Standard_PK_per90
+Performance_CrdY_per90
+Performance_CrdR_per90
+Expected_xG_per90
+Expected_npxG_per90
+Expected_xAG_per90
+xAG_per90
+Expected_npxG+xAG_per90
+Progression_PrgC_per90
+Carries_PrgC_per90
+Progression_PrgP_per90
+PrgP_per90
+Progression_PrgR_per90
+Receiving_PrgR_per90
+Standard_Sh_per90
+SCA Types_Sh_per90
+GCA Types_Sh_per90
+Blocks_Sh_per90
+Standard_SoT_per90
+Standard_Dist_per90
+KP_per90
+Performance_Crs_per90
+Total_Att_per90
+Short_Att_per90
+Medium_Att_per90
+Long_Att_per90
+Take-Ons_Att_per90
+Challenges_Att_per90
+Take-Ons_Succ_per90
+Take-Ons_Tkld_per90
+SCA_SCA_per90
+GCA_GCA_per90
+Aerial Duels_Won_per90
+Aerial Duels_Lost_per90
+Challenges_Lost_per90
+Performance_Fls_per90
+SCA Types_Fld_per90
+GCA Types_Fld_per90
+Performance_Fld_per90
