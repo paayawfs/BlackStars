@@ -65,13 +65,13 @@ Data scraped from [FBref](https://fbref.com) covering:
 
 | Player | Club | League |
 |--------|------|--------|
-| Mohammed Kudus | West Ham | Premier League |
-| Antoine Semenyo | Bournemouth | Premier League |
-| Jordan Ayew | Crystal Palace | Premier League |
-| Fatawu Issahaku | Leicester City | Championship |
-| Iñaki Williams | Athletic Bilbao | La Liga |
-| Kamaldeen Sulemana | Southampton | Championship |
-| Ernest Nuamah | Lyon | Ligue 1 |
+| Mohammed Kudus
+| Antoine Semenyo 
+| Jordan Ayew 
+| Fatawu Issahaku 
+| Iñaki Williams 
+| Kamaldeen Sulemana 
+| Ernest Nuamah 
 | + 6 more | | |
 
 ## 📈 Outputs
